@@ -1,5 +1,3 @@
-    Copyright 2010 Manish Sinha <mail@manishsinha.net>
-
     The MIT License
 
     Copyright (c) 2010 Manish Sinha<mail@manishsinha.net>
