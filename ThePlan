@@ -40,12 +40,12 @@ BASIC TYPE ASSERTS
     [*] is_not_string
 
     REAL
-    [ ] is_float
-    [ ] is_not_float
+    [*] is_float
+    [*] is_not_float
 
     NUMERIC
-    [ ] is_numeric
-    [ ] is_not_numeric
+    [*] is_numeric
+    [*] is_not_numeric
 
 ==============
 ARRAY ASSERTS

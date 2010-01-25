@@ -25,162 +25,222 @@
 
 class Ciunit
 {
-	/**
-	 * The constructor for Ciunit
-	 *
-	 * This constructor initializes the results array
-	 */
-	public function Ciunit()
-	{
-		$this->results = array();
+    /**
+     * The constructor for Ciunit
+     *
+     * This constructor initializes the results array
+     */
+    public function Ciunit()
+    {
+        $this->results = array();
 
-		$this->startBackTraceDepth = 2;
-	}
+        $this->startBackTraceDepth = 2;
+    }
 
-	/**
-	 * Assert succeeds if provided value is boolean
-	 */
-	public function is_bool($candidate, $message)
-	{		
-		$backTraceDepth = $this->startBackTraceDepth;
-		
-		$res = $this->is_x('is_bool', 'is_bool_assert', $candidate, $message, $backTraceDepth+1);
-		
-		// Push the Result in the list of results
-		array_push($this->results, $res);
-	}
+    /**
+     * Assert succeeds if provided value is boolean
+     */
+    public function is_bool($candidate, $message)
+    {       
+        $backTraceDepth = $this->startBackTraceDepth;
+        
+        $res = $this->is_x('is_bool', 'is_bool_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-	/**
-	 * Assert succeeds if provided value is not boolean
-	 */
-	public function is_not_bool($candidate, $message)
-	{
-		$backTraceDepth = $this->startBackTraceDepth;
+    /**
+     * Assert succeeds if provided value is not boolean
+     */
+    public function is_not_bool($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		$res = $this->is_x('is_not_bool', 'is_not_bool_assert', $candidate, $message, $backTraceDepth+1);
-		
-		// Push the Result in the list of results
-		array_push($this->results, $res);
-	}
+        $res = $this->is_x('is_not_bool', 'is_not_bool_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-	public function is_integer($candidate, $message)
-	{
-		$backTraceDepth = $this->startBackTraceDepth;
+    public function is_integer($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		$res = $this->is_x('is_integer', 'is_integer_assert', $candidate, $message, $backTraceDepth+1);
-		
-		// Push the Result in the list of results
-		array_push($this->results, $res);
-	}
+        $res = $this->is_x('is_integer', 'is_integer_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-	public function is_not_integer($candidate, $message)
-	{
-		$backTraceDepth = $this->startBackTraceDepth;
+    public function is_not_integer($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		$res = $this->is_x('is_not_integer', 'is_not_integer_assert', $candidate, $message, $backTraceDepth+1);
-		
-		// Push the Result in the list of results
-		array_push($this->results, $res);
-	}
+        $res = $this->is_x('is_not_integer', 'is_not_integer_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-	public function is_string($candidate, $message)
-	{
-		$backTraceDepth = $this->startBackTraceDepth;
+    public function is_string($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		$res = $this->is_x('is_string', 'is_string_assert', $candidate, $message, $backTraceDepth+1);
-		
-		// Push the Result in the list of results
-		array_push($this->results, $res);
-	}
+        $res = $this->is_x('is_string', 'is_string_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-	public function is_not_string($candidate, $message)
-	{
-		$backTraceDepth = $this->startBackTraceDepth;
+    public function is_not_string($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		$res = $this->is_x('is_not_string', 'is_not_string_assert', $candidate, $message, $backTraceDepth+1);
-		
-		// Push the Result in the list of results
-		array_push($this->results, $res);
-	}
+        $res = $this->is_x('is_not_string', 'is_not_string_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_float($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-	/********************  GENERIC CONTROLLER FOR ASSERTS ************************************/
-	private function is_x($test_type, $callback, $candidate, $message, $traceDepth)
-	{
-		$res['result'] = $this->$callback($candidate);
+        $res = $this->is_x('is_float', 'is_float_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-		$res['testDescription'] = $message;
+    public function is_not_float($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		$res['testName'] = $test_type;
-		
-		// Get the BackTrace
-		$backTrace = debug_backtrace();
-		// Chomp off the backtrace till only the required level
-		$res['backTrace'] = array_intersect_key($backTrace, array_flip(range(0, $traceDepth-1)));
+        $res = $this->is_x('is_not_float', 'is_not_float_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_numeric($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		// Reverse the Backtrace stack
-		$res['backTrace'] = array_reverse($res['backTrace']);
-		// Unset the Object key for the outermost trace since it is gigantic
-		unset($res['backTrace'][0]['object']);
+        $res = $this->is_x('is_numeric', 'is_numeric_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-		// Get the first or the outermost caller function/method
-		$caller = $res['backTrace'][0];
-		$res['callerFilename'] = $caller['file'];
-		$res['callerLineno'] = $caller['line'];
-		$res['callerFunction'] = $caller['function'];
+    public function is_not_numeric($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
 
-		return $res;
-	}
-	/*********************** END GENERIC CONTROLLER FOR ASSERTS *******************************/
+        $res = $this->is_x('is_not_numeric', 'is_not_numeric_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
-	/************************** START ASSERT SECTION ******************************************/
+    /********************  GENERIC CONTROLLER FOR ASSERTS ************************************/
+    private function is_x($test_type, $callback, $candidate, $message, $traceDepth)
+    {
+        $res['result'] = $this->$callback($candidate);
 
-	private function is_bool_assert($candidate)
-	{
-		return is_bool($candidate);
-	}
+        $res['testDescription'] = $message;
 
-	private function is_not_bool_assert($candidate)
-	{
-		return !(is_bool($candidate));
-	}
+        $res['testName'] = $test_type;
+        
+        // Get the BackTrace
+        $backTrace = debug_backtrace();
+        // Chomp off the backtrace till only the required level
+        $res['backTrace'] = array_intersect_key($backTrace, array_flip(range(0, $traceDepth-1)));
 
-	private function is_integer_assert($candidate)
-	{
-		return is_int($candidate);
-	}
+        // Reverse the Backtrace stack
+        $res['backTrace'] = array_reverse($res['backTrace']);
+        // Unset the Object key for the outermost trace since it is gigantic
+        unset($res['backTrace'][0]['object']);
 
-	private function is_not_integer_assert($candidate)
-	{
-		return !(is_int($candidate));
-	}
+        // Get the first or the outermost caller function/method
+        $caller = $res['backTrace'][0];
+        $res['callerFilename'] = $caller['file'];
+        $res['callerLineno'] = $caller['line'];
+        $res['callerFunction'] = $caller['function'];
 
-	private function is_string_assert($candidate)
-	{
-		return is_string($candidate);
-	}
+        return $res;
+    }
+    /*********************** END GENERIC CONTROLLER FOR ASSERTS *******************************/
 
-	private function is_not_string_assert($candidate)
-	{
-		return !(is_string($candidate));
-	}
+    /************************** START ASSERT SECTION ******************************************/
 
-	/*************************** END ASSERT SECTION ******************************************/
-	
-	/*  This method returns back all the results stored  */
-	public function generate_report()
-	{
-		return $this->results;
-	}
-	
-	/****************************** START PRIVATE FIELDS  ************************************/
+    private function is_bool_assert($candidate)
+    {
+        return is_bool($candidate);
+    }
 
-	/*  The array to hold the results of all the tests  */
-	private $results;
+    private function is_not_bool_assert($candidate)
+    {
+        return !(is_bool($candidate));
+    }
 
-	/*  The Initial BackTrace Depth  */
-	private $startBackTraceDepth;
+    private function is_integer_assert($candidate)
+    {
+        return is_int($candidate);
+    }
 
-	/***************************** END PRIVATE FIELDS *****************************************/
+    private function is_not_integer_assert($candidate)
+    {
+        return !(is_int($candidate));
+    }
+
+    private function is_string_assert($candidate)
+    {
+        return is_string($candidate);
+    }
+
+    private function is_not_string_assert($candidate)
+    {
+        return !(is_string($candidate));
+    }
+    
+    private function is_float_assert($candidate)
+    {
+        return is_float($candidate);
+    }
+
+    private function is_not_float_assert($candidate)
+    {
+        return !(is_float($candidate));
+    }
+    
+    private function is_numeric_assert($candidate)
+    {
+        return is_numeric($candidate);
+    }
+
+    private function is_not_numeric_assert($candidate)
+    {
+        return !(is_numeric($candidate));
+    }
+
+    /*************************** END ASSERT SECTION ******************************************/
+    
+    /*  This method returns back all the results stored  */
+    public function generate_report()
+    {
+        return $this->results;
+    }
+    
+    /****************************** START PRIVATE FIELDS  ************************************/
+
+    /*  The array to hold the results of all the tests  */
+    private $results;
+
+    /*  The Initial BackTrace Depth  */
+    private $startBackTraceDepth;
+
+    /***************************** END PRIVATE FIELDS *****************************************/
 }
 
 ?>

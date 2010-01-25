@@ -14,11 +14,17 @@ class Welcome extends Controller {
         //$this->is_bool_true();
         //$this->is_bool_false();
         
-        $this->is_integer_true();
-        $this->is_integer_false();
+        //$this->is_integer_true();
+        //$this->is_integer_false();
         
         //$this->is_string_true();
         //$this->is_string_false();
+        
+        //$this->is_float_true();
+        //$this->is_float_false();
+        
+        //$this->is_numeric_true();
+        //$this->is_numeric_false();
         
         echo "<pre>";
         print_r($this->ciunit->generate_report());
@@ -53,6 +59,26 @@ class Welcome extends Controller {
     function is_string_false()
     {
         $this->ciunit->is_not_string(4, "4 is not a string");
+    }
+    
+    function is_float_true()
+    {
+        $this->ciunit->is_float(5.43, "5.43 is a float");
+    }
+    
+    function is_float_false()
+    {
+        $this->ciunit->is_not_float('2', "'2' is not a float");
+    }
+    
+    function is_numeric_true()
+    {
+        $this->ciunit->is_numeric(0xFF, "0xFF is a numeric");
+    }
+    
+    function is_numeric_false()
+    {
+        $this->ciunit->is_not_numeric('0FF', "'0FF' is not a numeric");
     }
 }
 
