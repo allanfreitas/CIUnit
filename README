@@ -1,0 +1,22 @@
+			CIUnit
+		=====================
+
+CIUnit is a Unit Testing Framework for CodeIgniter.
+
+I have never been happy with the basic barebones support for Unit Testing 
+on CodeIgniter. Even in the latest release, nothing much has changed.
+
+This is a project which will match very much with NUnit. Even though NUnit 
+is for .NET which is very strongly statically typed, PHP is duck-typed.
+Care will be maintained for this difference.
+
+The main reason for not using unit_test library from stock CodeIgniter 
+is that it is crippled in terms of functionality. Probably I am biased 
+towards NUnit or the CodeIgniter devs don't want to add more tests 
+so as to control the bloat.
+
+Finally, I love CodeIgniter. It is the only PHP Framework I could start 
+working without any problems. The documentation rocks. There are a few 
+problems which I want to fix. 
+
+Keep an eye on this project. That's all Folks.
