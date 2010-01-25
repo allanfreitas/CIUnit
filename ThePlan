@@ -32,12 +32,12 @@ BASIC TYPE ASSERTS
     [*] is_not_bool
 
     INTEGER
-    [ ] is_integer
-    [ ] is_not_integer
+    [*] is_integer
+    [*] is_not_integer
 
     STRING
-    [ ] is_string
-    [ ] is_not_string
+    [*] is_string
+    [*] is_not_string
 
     REAL
     [ ] is_float
