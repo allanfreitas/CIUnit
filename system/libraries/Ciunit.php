@@ -142,6 +142,86 @@ class Ciunit
         // Push the Result in the list of results
         array_push($this->results, $res);
     }
+    
+    public function is_array($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_array', 'is_array_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_not_array($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_not_array', 'is_not_array_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_array_empty($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_array_empty', 'is_array_empty_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_array_not_empty($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_array_not_empty', 'is_array_not_empty_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_object($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_object', 'is_object_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_not_object($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_not_object', 'is_not_object_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_true($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_true', 'is_true_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_false($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_false', 'is_false_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
 
     /********************  GENERIC CONTROLLER FOR ASSERTS ************************************/
     private function is_x($test_type, $callback, $candidate, $message, $traceDepth)
@@ -222,6 +302,46 @@ class Ciunit
     private function is_not_numeric_assert($candidate)
     {
         return !(is_numeric($candidate));
+    }
+    
+    private function is_array_assert($candidate)
+    {
+        return is_array($candidate);
+    }
+
+    private function is_not_array_assert($candidate)
+    {
+        return !(is_array($candidate));
+    }
+    
+    private function is_array_empty_assert($candidate)
+    {
+        return (count($candidate) === 0)? true : false;
+    }
+
+    private function is_array_not_empty_assert($candidate)
+    {
+        return (count($candidate) === 0)? false : true;
+    }
+    
+    private function is_object_assert($candidate)
+    {
+        return is_object($candidate);
+    }
+
+    private function is_not_object_assert($candidate)
+    {
+        return !is_object($candidate);
+    }
+    
+    private function is_true_assert($candidate)
+    {
+        return ($candidate === true)? true : false;
+    }
+
+    private function is_false_assert($candidate)
+    {
+        return ($candidate === false)? true : false;
     }
 
     /*************************** END ASSERT SECTION ******************************************/

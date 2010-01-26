@@ -12,8 +12,8 @@ BASIC VALUE ASSERTS
     [ ] are_not_equal
 
     BOOL
-    [ ] is_true
-    [ ] is_false
+    [*] is_true
+    [*] is_false
 
     NULL
     [ ] is_null
@@ -51,11 +51,11 @@ BASIC TYPE ASSERTS
 ARRAY ASSERTS
 ==============
 
-    [ ] is_array
-    [ ] is_not_array
+    [*] is_array
+    [*] is_not_array
 
-    [ ] is_array_empty
-    [ ] is_array_not_empty
+    [*] is_array_empty
+    [*] is_array_not_empty
 
     [ ] array_count_equals
     [ ] array_count_not_equals
@@ -63,17 +63,17 @@ ARRAY ASSERTS
     [ ] array_key_exists
     [ ] array_key_not_exists
 
-    [ ] array_all_itmes_null
-    [ ] array_all_itmes_not_null
+    [ ] array_all_items_null
+    [ ] array_all_items_not_null
 
 ==============
 CLASS ASSERTS
 ==============
 
     OBJECT
-    [ ] is_object
-    [ ] is_not_object
+    [*] is_object
+    [*] is_not_object
 
     OBJECT TYPE
-    [ ] is_instance_of_type
-    [ ] is_not_instance_of_type
+    [*] is_instance_of_type
+    [*] is_not_instance_of_type

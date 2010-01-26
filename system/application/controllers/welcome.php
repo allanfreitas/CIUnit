@@ -26,6 +26,18 @@ class Welcome extends Controller {
         //$this->is_numeric_true();
         //$this->is_numeric_false();
         
+        //$this->is_array_true();
+        //$this->is_array_false();
+        
+        $this->is_array_empty_true();
+        $this->is_array_empty_false();
+        
+        //$this->is_object_true();
+        //$this->is_object_false();
+        
+        //$this->is_true();
+        //$this->is_false();
+        
         echo "<pre>";
         print_r($this->ciunit->generate_report());
         echo "</pre>";
@@ -80,6 +92,47 @@ class Welcome extends Controller {
     {
         $this->ciunit->is_not_numeric('0FF', "'0FF' is not a numeric");
     }
+    
+    function is_array_true()
+    {
+        $this->ciunit->is_array(array(), "An empty array passed");
+    }
+    
+    function is_array_false()
+    {
+        $this->ciunit->is_not_array(0xFF, "0xFF is not an array");
+    }
+    
+    function is_array_empty_true()
+    {
+        $this->ciunit->is_array_empty(array(), "Empty array passed");
+    }
+    
+    function is_array_empty_false()
+    {
+        $this->ciunit->is_array_not_empty(array(3,2), "array(3,2) passed");
+    }
+    
+    function is_object_true()
+    {
+        $this->ciunit->is_object(new DOMDocument(), "An instance of DOMDocument passed");
+    }
+    
+    function is_object_false()
+    {
+        $this->ciunit->is_not_object(0xFF, "0xFF is not an object");
+    }
+    
+    function is_true()
+    {
+        $this->ciunit->is_true(true, "True passed");
+    }
+    
+    function is_false()
+    {
+        $this->ciunit->is_false(false, "False");
+    }
+    
 }
 
 /* End of file welcome.php */
