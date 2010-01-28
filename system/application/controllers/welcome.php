@@ -29,14 +29,26 @@ class Welcome extends Controller {
         //$this->is_array_true();
         //$this->is_array_false();
         
-        $this->is_array_empty_true();
-        $this->is_array_empty_false();
+        //$this->is_array_empty_true();
+        //$this->is_array_empty_false();
         
         //$this->is_object_true();
         //$this->is_object_false();
         
         //$this->is_true();
         //$this->is_false();
+        
+        //$this->is_null_true();
+        //$this->is_null_false();
+        
+        //$this->is_greater();
+        //$this->is_lesser();
+        
+        //$this->are_equal();
+        //$this->are_not_equal();
+        
+        //$this->array_count_equals_true();
+        //$this->array_count_equals_false();
         
         echo "<pre>";
         print_r($this->ciunit->generate_report());
@@ -133,6 +145,45 @@ class Welcome extends Controller {
         $this->ciunit->is_false(false, "False");
     }
     
+    function is_null_true()
+    {
+        $this->ciunit->is_null(null, "Passed null");
+    }
+    
+    function is_null_false()
+    {
+        $this->ciunit->is_not_null(0xFF, "0xFF is not null");
+    }
+    
+    function is_greater()
+    {
+        $this->ciunit->is_greater(23, 21 , "23  > 21");
+    }
+    
+    function is_lesser()
+    {
+        $this->ciunit->is_lesser(21, 23 , "21  < 23");
+    }
+    
+    function are_equal()
+    {
+        $this->ciunit->are_equal(23, 23 , "23  === 23");
+    }
+    
+    function are_not_equal()
+    {
+        $this->ciunit->are_not_equal(23, 21 , "23  != 21");
+    }
+    
+    function array_count_equals_true()
+    {
+        $this->ciunit->array_count_equals(array(2,3), 2, "Sent array(2,3) and expected as 2");
+    }
+    
+    function array_count_equals_false()
+    {
+        $this->ciunit->array_count_not_equals(array(2,3), 1, "Sent array(2,3) and expected as 1");
+    }
 }
 
 /* End of file welcome.php */

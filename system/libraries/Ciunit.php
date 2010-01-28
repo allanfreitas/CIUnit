@@ -223,10 +223,122 @@ class Ciunit
         array_push($this->results, $res);
     }
 
+    public function is_null($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_null', 'is_null_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_not_null($candidate, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->is_x('is_not_null', 'is_not_null_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_greater($candidate1, $candidate2, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $candidate = $candidate1 - $candidate2;
+        $res = $this->is_x('is_greater', 'is_greater_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function is_lesser($candidate1, $candidate2, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $candidate = $candidate1 - $candidate2;
+        $res = $this->is_x('is_lesser', 'is_lesser_assert', $candidate, $message, $backTraceDepth+1);
+        
+        // Push the Result in the list of results
+        array_push($this->results, $res);
+    }
+    
+    public function are_equal($candidate1, $candidate2, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->are_x('are_equal', 'are_equal_assert', $candidate1, $candidate2, $message, $backTraceDepth+1);
+        
+        // Push the Result in the laret of results
+        array_push($this->results, $res);
+    }
+    
+    public function are_not_equal($candidate1, $candidate2, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $res = $this->are_x('are_not_equal', 'are_not_equal_assert', $candidate1, $candidate2, $message, $backTraceDepth+1);
+        
+        // Push the Result in the laret of results
+        array_push($this->results, $res);
+    }
+    
+    public function array_count_equals($array, $count, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $real_count = count($array);
+        $res = $this->are_x('are_equal', 'are_equal_assert', $real_count, $count, $message, $backTraceDepth+1);
+        
+        // Push the Result in the laret of results
+        array_push($this->results, $res);
+    }
+    
+    public function array_count_not_equals($array, $count, $message)
+    {
+        $backTraceDepth = $this->startBackTraceDepth;
+
+        $real_count = count($array);
+        $res = $this->are_x('are_not_equal', 'are_not_equal_assert', $real_count, $count, $message, $backTraceDepth+1);
+        
+        // Push the Result in the laret of results
+        array_push($this->results, $res);
+    }
+    
+    
     /********************  GENERIC CONTROLLER FOR ASSERTS ************************************/
     private function is_x($test_type, $callback, $candidate, $message, $traceDepth)
     {
         $res['result'] = $this->$callback($candidate);
+
+        $res['testDescription'] = $message;
+
+        $res['testName'] = $test_type;
+        
+        // Get the BackTrace
+        $backTrace = debug_backtrace();
+        // Chomp off the backtrace till only the required level
+        $res['backTrace'] = array_intersect_key($backTrace, array_flip(range(0, $traceDepth-1)));
+
+        // Reverse the Backtrace stack
+        $res['backTrace'] = array_reverse($res['backTrace']);
+        // Unset the Object key for the outermost trace since it is gigantic
+        unset($res['backTrace'][0]['object']);
+
+        // Get the first or the outermost caller function/method
+        $caller = $res['backTrace'][0];
+        $res['callerFilename'] = $caller['file'];
+        $res['callerLineno'] = $caller['line'];
+        $res['callerFunction'] = $caller['function'];
+
+        return $res;
+    }
+    
+    private function are_x($test_type, $callback, $candidate1, $candidate2, $message, $traceDepth)
+    {
+        $res['result'] = $this->$callback($candidate1, $candidate2);
 
         $res['testDescription'] = $message;
 
@@ -343,7 +455,37 @@ class Ciunit
     {
         return ($candidate === false)? true : false;
     }
+    
+    private function is_null_assert($candidate)
+    {
+        return is_null($candidate);
+    }
 
+    private function is_not_null_assert($candidate)
+    {
+        return !is_null($candidate);
+    }
+
+    private function is_greater_assert($candidate)
+    {
+        return ($candidate > 0)? true : false;
+    }
+    
+    private function is_lesser_assert($candidate)
+    {
+        return ($candidate < 0)? true : false;
+    }
+    
+    private function are_equal_assert($candidate1, $candidate2)
+    {
+        return ($candidate1 === $candidate2)? true : false;
+    }
+    
+    private function are_not_equal_assert($candidate1, $candidate2)
+    {
+        return ($candidate1 === $candidate2)? false : true;
+    }
+    
     /*************************** END ASSERT SECTION ******************************************/
     
     /*  This method returns back all the results stored  */

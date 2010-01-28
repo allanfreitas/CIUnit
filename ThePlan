@@ -8,20 +8,20 @@ BASIC VALUE ASSERTS
 ======================
 
     EQUAL
-    [ ] are_equal
-    [ ] are_not_equal
+    [*] are_equal
+    [*] are_not_equal
 
     BOOL
     [*] is_true
     [*] is_false
 
     NULL
-    [ ] is_null
-    [ ] is_not_null
+    [*] is_null
+    [*] is_not_null
 
     INEQUALITY
-    [ ] is_greater
-    [ ] is_lesser
+    [*] is_greater
+    [*] is_lesser
 
 ===================
 BASIC TYPE ASSERTS
@@ -57,14 +57,14 @@ ARRAY ASSERTS
     [*] is_array_empty
     [*] is_array_not_empty
 
-    [ ] array_count_equals
-    [ ] array_count_not_equals
+    [*] array_count_equals
+    [*] array_count_not_equals
 
-    [ ] array_key_exists
-    [ ] array_key_not_exists
+    [X] array_key_exists
+    [X] array_key_not_exists
 
-    [ ] array_all_items_null
-    [ ] array_all_items_not_null
+    [X] array_all_items_null
+    [X] array_all_items_not_null
 
 ==============
 CLASS ASSERTS

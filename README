@@ -18,4 +18,8 @@ Finally, I love CodeIgniter. It is the only PHP Framework I could start
 working without any problems. The documentation rocks! There are a few 
 problems which I want to fix. 
 
+UPDATE: The code is really badly written. It seems I was drunk whenever 
+I opened the codebase. The thing just works somehow and NUnit people might 
+feel at home. The codebase is shit and I am working to improve it.
+
 Keep an eye on this project. That's all Folks.
